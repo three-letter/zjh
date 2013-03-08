@@ -1,0 +1,30 @@
+<% content_for :title do %>
+  首页 
+<% end %>
+
+<% if flash[:notice] %>
+  <div class='alert alert-success'>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+  <div class="alert alert-success" style="text-align:center; margin:10px 0px 20px;">
+    软件041的骚年们，一起来玩游戏吧。。。
+  </div>
+
+  <div class="profile span6">
+
+  </div>
+
+
+<div class="rsidebar">
+  <h5 class="rsidebar_title">游戏实况实时报道</h5>
+  <div class="rsidebar_content">
+    <ul id="zjh_reports">
+      <li>游戏还未开始</li>
+    </ul>
+  </div>
+</div>
+
+

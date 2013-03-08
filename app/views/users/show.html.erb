@@ -1,0 +1,87 @@
+<% content_for :title do %>
+用户信息
+<% end %>
+
+<% if flash[:avatar_notice] %>
+  <div class='alert alert-success'>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:avatar_notice] %>
+  </div>
+<% end %>
+
+
+<ul class="breadcrumb">
+  <li><a href="<%= root_path %>">Home</a><span class="divider">/</span></li>
+  <li class="active">个人信息</li>
+</ul>
+
+<div class="profile span9">
+<%= form_for @user, :html => { :class => "simple_form form-horizontal" } do |f| %>
+
+  <legend>基本信息</legend>
+  
+  <div class="control-group">
+    <%= f.label :name, '用户名', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :value => @user.name, :readonly => true %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :avatar, '头像', :class => 'control-label' %>
+    <div class="controls">
+      <%= image_tag @user.avatar_type(:small) %>
+      <%= link_to '修改头像', avatar_path %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :alipay, '支付宝帐号', :class => 'control-label' %>
+    <div class="controls">
+      需要身份验证，点击<a href="">这里</a>
+    </div>
+  </div>
+
+<% end %>
+</div>
+
+
+
+<div class="rsidebar">
+  <h5 class="rsidebar_title">友情提示</h5>
+  <div class="rsidebar_content">
+    <div class="user_hint">1）上传头像，保持足够的活跃度，让他人更关注你</div>
+    <div class="user_hint">2）Verify账号，能够在交易中不断学习成长</div>
+    <div class="user_hint">3）Verify账号，能在分享中获取相应的报酬</div>
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  
+  $(function () {
+      // Initialize the jQuery File Upload widget:
+      $('#videoupload').fileupload({
+        multipart: true,
+        url: "http://up.qbox.me/upload",
+        dataType: "json",
+        add: function(e,t){
+          var n,r;
+          return r=/(\.|\/)(mp4)$/i,n=t.files[0],r.test(n.type)||r.test(n.name)?(t.context=$(tmpl("template-upload",n)),$("#fileupload-area").html(t.context),t.submit()):alert("只支持mp4格式")
+        },
+        progress: function(e,t){
+          var progress = parseInt(t.loaded / t.total * 100, 10);
+          $('.progress .bar').css('width',progress + '%');
+          $('.progress .bar').html("<font color='green'>" + progress + "%</font>");
+        },
+        done: function(e,t){
+          $('.progress .bar').css('width',100 + '%');
+          $('.progress .bar').html("<font color='green'>" + 100 + "%</font>");
+          $("#cast_url").val("<%= @upload_key %>");   
+        }
+      });    
+  });
+
+</script>

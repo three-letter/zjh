@@ -1,0 +1,200 @@
+body {
+  background: url("bg.png") repeat scroll 0 0 whiteSmoke; 
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; 
+}
+
+img {
+    border: 0 none;
+    max-width: none;
+}
+
+/** login and regiest cdd **/
+form.login {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-radius: 6px 6px 6px 6px;
+  width: 500px;
+  box-shadow: 0 1px 6px #BBBBBB;
+  margin: 40px auto 50px;
+  padding: 20px 0px;
+}
+
+.username_box, .pwd_box {
+  background: none repeat scroll 0 0 white;
+  border: 1px solid #EEEEEE;
+  border-radius: 8px 8px 8px 8px;
+  font-size: 20px;
+  height: 55px;
+  line-height: 45px;
+  width: 350px;
+  margin: 30px auto;
+}
+
+.submit_box {
+  width: 350px;
+  margin: 30px auto;
+}
+
+.username_box input, .pwd_box input{
+  border: 0 none;
+  height: 30px;
+  line-height: 40px;
+  width: 200px;
+  margin: 8px 0px;
+}
+
+.login label {
+  font-family: "Hiragino Sans GB",hei,"microsoft yahei",sans-serif;
+  float:left;
+  color: gray;
+  width:80px;
+  font-size: 20px;
+  margin: 18px 15px;
+  text-align: right;
+}
+
+.user_hint {
+  width: 180px;
+  text-align: left;
+  margin: 5px 0px 10px 10px;
+  font-size: 13px;
+}
+
+.home_field {
+  float: right;
+}
+
+/** owen css **/
+
+.content {
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+.line {
+  border-top: 1px dashed #C6C6C6;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.profile {
+  background-color: #FFFFFF;
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
+  margin: 0 0 20px 0px;
+  padding: 10px;
+}
+
+.case {
+  margin-left: -45px;
+}
+
+.case_img {
+  margin-left: 5px;
+  width: 160px;
+  height: 100px;
+}
+
+.case_title {
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 120%;
+}
+
+.case_desc {
+  height: 80px;
+}
+blockquote {
+  margin: 5px 0 18px;
+  padding: 0 0 0 5px;
+}
+
+.case_auth {
+  float: right;
+  margin-right: 5px;
+}
+
+
+.player {
+  margin: 20px 30px;
+  width: 640px;
+  padding-top: 30px 30px;
+}
+
+.cast_show {
+  margin: 1px;
+  padding-top: 20px;
+}
+
+.cast_user {
+  width: 60px;
+  float: left;
+}
+
+.cast_info {
+  width: 570px;
+  float: right;
+  word-break: break-all;
+}
+
+.cast_title {
+}
+
+.cast_time {
+  padding-top: 1px;
+}
+
+.cast_cmt {
+  margin-top: 20px;
+}
+
+.avatar {
+  border-radius: 50% 50% 50% 50%;
+}
+
+.rsidebar {
+  float: left;
+  margin-left: 10px;
+  width: 440px;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-color: #ECECEC #ECECEC #CACACA;
+  border-image: none;
+  border-radius: 5px 5px 5px 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+.rsidebar_title {
+  background: -moz-linear-gradient(center top , #FCFCFC 0%, #F5F5F5 100%) repeat scroll 0 0 transparent;
+  border-radius: 3px 3px 3px 3px;
+  border-top: 1px solid #EBEBEB;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  color: #555555;
+  font-size: 14px;
+  font-weight: bolder;
+  margin-top: -1px;
+  padding: 6px;
+  text-indent: 15px;
+}
+.rsidebar_content {
+  margin-top: 10px;
+}
+.rsidebar_tag {
+  margin-left: 2px;
+}
+.rsidebar_content ul {
+  margin-left: 5px;
+}
+.rsidebar_content ul li {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  margin-right: 16px;
+  opacity: 0.6;
+  padding: 1px 2px;
+}
+
+

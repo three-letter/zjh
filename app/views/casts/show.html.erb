@@ -1,0 +1,85 @@
+<% content_for :title do %>
+分享视播
+<% end %>
+
+<% content_for :head do %>
+  <meta name="url-token" content="<%= @cast.url %>"/>
+<% end %>
+
+
+<ul class="breadcrumb">
+  <li><a href="<%= root_path %>">Home</a><span class="divider">/</span></li>
+  <li class="active">视播<span class="divider">/</span></li>
+  <li class="active"><%= @cast.title %></li>
+</ul>
+
+
+<div class="profile span9">
+
+  <div class="player">
+    <%= render "player" %>
+    
+    <div class="row cast_show">
+      <div class="cast_user">
+        <img src="<%= @cast.user.avatar_type(:small) %>" style="border-radius: 50% 50% 50% 50%" />
+      </div>
+      <div class="cast_info">
+        <div class="cast_title">
+          <h3><%= @cast.title %></h3>
+          <blockquote>
+          视频群聊和内容共享服务Rabbit刚获得330万美元的种子期融资，投资方包括Google Ventures和CrunchFund等。目前Rabbit应用只支持Mac平台。它和一般视频群聊最大不同在于，它同时也是一个屏幕内容共享服务。比如Rabbit可以很轻松地让你和一群朋友远程看电影并实时吐槽了 
+          </blockquote>
+        </div>
+        <div class="cast_time">
+          <% unless @cast.tag_names.blank? %>
+            <icon class="icon-tags"></icon>
+            <%= @cast.tag_names %>
+          <% end %>
+          <div class="pull-right">
+            — <font class="cast_discuss_user" id="<%= @cast.user.name %>"><%= @cast.user.name %></font>于<%= time_ago_in_words(@cast.created_at) %>前分享
+          </div>
+        </div>
+       </div>
+    </div>
+    <hr>
+    <%= render partial: "comments", locals: { comments: @cast.comments } %>
+  </div>
+
+  <a href="#play-pay" id="play-a" role="button" class="btn" data-toggle="modal" style="display:none">Pay</a>
+  <div id="play-pay" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      免费试看
+    </div>
+    <div class="modal-body">
+      <p>亲~ 该视频只能试看<%= @cast.free_time %>分钟 ，若需完整观看，请付费！</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancle</button>
+      <button class="btn btn-primary">Go To Pay</button>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $("#jquery_jplayer_1").bind($.jPlayer.event.timeupdate, function(event){
+    var free_time = <%= @cast.free_time %>;
+    var current_time = event.jPlayer.status.currentTime;
+    if(current_time > free_time * 60){
+      $(this).jPlayer("pause", 0);
+      $("#play-a").click();
+    }
+  }); 
+</script>
+
+
+
+<div class="rsidebar">
+  <h5 class="rsidebar_title">友情提示</h5>
+  <div class="rsidebar_content">
+    <div class="user_hint">1）若需观看，请先点击播放按钮</div>
+    <div class="user_hint">2）视频资源存储在云端，偶尔出现加载缓慢情况</div>
+    <div class="user_hint">3）凸显已付费观看用户的评论，便于了解视频的有效性</div>
+  </div>
+</div>

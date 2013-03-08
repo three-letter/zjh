@@ -1,0 +1,50 @@
+<% content_for :title do %>
+  任务列表
+<% end%>
+
+<ul class="breadcrumb">
+  <li><a href="<%= root_path %>">Home</a><span class="divider">/</span></li>
+  <li class="active">Task List</li>
+</ul>
+
+<div class="profile span9">
+
+<h4>待办任务</h4>
+<table class="table" id="todo">
+  <% @todos.each do |todo| %>
+    <%= render :partial => "task", :locals => {task: todo} %>
+  <% end %>
+</table>
+
+<hr>
+
+<h4>已办任务</h4>
+<table class="table">
+  <% @dones.each do |done| %>
+<tr>
+      <td><icon class="icon-folder-close"></icon></td>
+      <td><del><%= done.info %></del></td>
+      <td><%= done.user.name %></td>
+      <% if @current_user.name == 'chx2103' %>
+        <td><%= link_to "Delete", task_path(done), :method => :delete, :class => "btn btn-danger" %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+
+<legend>新建待办任务</legend>
+
+<%= render "form" %>
+
+</div>
+
+
+<div class="rsidebar">
+  <h5 class="rsidebar_title">友情提示</h5>
+  <div class="rsidebar_content">
+    <div class="user_hint">1）提交你在网站的发现的bug</div>
+    <div class="user_hint">2）提交你对网站的改进意见</div>
+    <div class="user_hint">3）提交你对视播的创意想法</div>
+  </div>
+</div>
