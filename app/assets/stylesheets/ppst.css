@@ -198,3 +198,87 @@ blockquote {
 }
 
 
+.room {
+  width: 550px;
+  height: 330px;
+  margin: 10px;
+}
+
+.room_status {
+  margin: 20px 220px;
+  font-size: 20px;
+  width: 300px;
+}
+
+.desktop {
+  border: 1px solid #EEEEEE;
+  width: 120px;
+  height: 250px;
+  margin: 200px 180px;
+}
+
+.user_0 {
+  border-radius: 50% 50% 50% 50%;
+  width: 60px;
+  height: 60px;
+  margin: 80px 100px;
+}
+
+.user_1 {
+  border-radius: 50% 50% 50% 50%;
+  width: 60px;
+  height: 60px;
+  margin: 30px 100px;
+}
+
+.user_2 {
+  border-radius: 50% 50% 50% 50%;
+  width: 60px;
+  height: 60px;
+  margin: 60px 210px;
+}
+
+.user_3 {
+  border-radius: 50% 50% 50% 50%;
+  width: 60px;
+  height: 60px;
+  margin: -245px 320px; 
+}
+
+.user_4 {
+  border-radius: 50% 50% 50% 50%;
+  width: 60px;
+  height: 60px;
+  margin: 45px 320px; 
+}
+
+.user_5 {
+  border-radius: 50% 50% 50% 50%;
+  width: 60px;
+  height: 60px;
+  margin: -185px 210px; 
+}
+
+.zjh_score {
+  width: 100px;
+  font-size: 14px;
+  margin: 120px 15px;
+}
+
+.operator {
+  margin: 0px 100px;
+}
+
+.operator ul{
+  margin: 0px;
+  list-style:none;
+}
+
+.operator li{
+  margin: 0px 10px;
+  float: left;
+}
+
+.poker_img {
+  border: 1px solid #EEEEEE;
+}

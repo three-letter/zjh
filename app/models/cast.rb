@@ -15,6 +15,10 @@ class Cast < ActiveRecord::Base
 
   scope :recent_casts, lambda { |uid, limit| joins(:user).order("created_at desc").where("users.id = ?", uid).limit(limit) }
 
+  def status
+    price == 1
+  end
+
   def video_url
     "http://ppstd.dn.qbox.me/#{url}"
   end

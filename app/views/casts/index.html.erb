@@ -14,6 +14,69 @@
   </div>
 
   <div class="profile span6">
+    <div class="room_status">
+      <% if @cast.nil? || !@cast.status  %>
+        游戏还未开始...
+        <p style="font-size: 12px;margin: 10px 20px;">点击<a href="">这里</a>加入</p>
+      <% else %>
+        游戏正进行中...
+      <% end %>
+      </div>
+
+  <div class="room">
+
+    <div class="user_0">
+      <img src="http://ppstd.dn.qbox.me/avatar_1_1361677063_small.jpg" />
+    </div>
+
+    <div class="user_1">
+      <img src="http://ppstd.dn.qbox.me/avatar_1_1361677063_small.jpg" />
+    </div>
+    
+    <div class="user_2">
+      <img src="http://ppstd.dn.qbox.me/avatar_1_1361677063_small.jpg" />
+    </div>
+
+    <div class="user_3">
+      <img src="http://ppstd.dn.qbox.me/avatar_1_1361677063_small.jpg" />
+    </div>
+
+    <div class="user_4">
+      <img src="http://ppstd.dn.qbox.me/avatar_1_1361677063_small.jpg" />
+    </div>
+
+    <div class="user_5">
+      <img src="http://ppstd.dn.qbox.me/avatar_1_1361677063_small.jpg" />
+    </div>
+
+    <div class="desktop">
+      <div class="zjh_score">
+        累计积分: <font id="score">120</font>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="operator">
+    <ul>
+      <li><div class="btn">开始</li>
+      <li><div class="btn">1分</li>
+      <li><div class="btn">2分</li>
+      <li><div class="btn">5分</li>
+      <li><div class="btn">弃牌</li>
+    </ul>
+  </div>
+
+    <h6 style="margin: 80px 200px 20px;">以下为你这局的牌：</h6>
+    <div class="operator">
+    <ul>
+      <li><div class="poker_img"><img src="http://ppstd.dn.qbox.me/11.jpg?imageView/2/w/100/h/160" /></li>
+      <li><div class="poker_img"><img src="http://ppstd.dn.qbox.me/11.jpg?imageView/2/w/100/h/160" /></li>
+      <li><div class="poker_img"><img src="http://ppstd.dn.qbox.me/11.jpg?imageView/2/w/100/h/160" /></li>
+    </ul>
+    </div>
+
+  </div>
 
   </div>
 
@@ -22,7 +85,9 @@
   <h5 class="rsidebar_title">游戏实况实时报道</h5>
   <div class="rsidebar_content">
     <ul id="zjh_reports">
-      <li>游戏还未开始</li>
+      <% if @cast.nil? || !@cast.status  %>
+        <li>游戏还未开始</li>
+      <% end %>
     </ul>
   </div>
 </div>
