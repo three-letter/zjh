@@ -15,13 +15,28 @@ class Cast < ActiveRecord::Base
 
   scope :recent_casts, lambda { |uid, limit| joins(:user).order("created_at desc").where("users.id = ?", uid).limit(limit) }
 
+  def sort_comments
+    comments.sort { |x,y| x.id <=> y.id }
+  end
+
+  def all_ready
+    all = true
+    comments.each do |cmt|
+      unless cmt.active
+        all = false
+        break
+      end
+    end
+    all
+  end
+
   def active
     price == 1
   end
   
   def partner index
     if index < comments.size()
-      comments[index].user
+      sort_comments[index].user
     end
   end
 

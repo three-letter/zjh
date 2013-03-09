@@ -20,6 +20,8 @@
     <% 0.upto(5) do |index| %>
       <div class="user_<%= index %>">
         <img src="<%= @cast.partner(index).nil? ? "" : @cast.partner(index).avatar_type(:small) %>" />
+        <%= @cast.partner(index).nil? ? "" : @cast.partner(index).name %>
+        <p style="color: red"><%= @cast.partner(index).nil? ? "" : @cast.comments[index].active_msg %></p>
       </div>
     <% end %>
 
@@ -31,26 +33,26 @@
 
   </div>
 
-  <div id="poker_btn" class="operator hide">
+  <div id="poker_btn" class="operator">
     <ul>
-      <li><div class="btn">开始</li>
-      <li><div class="btn">1分</li>
-      <li><div class="btn">2分</li>
-      <li><div class="btn">5分</li>
-      <li><div class="btn">弃牌</li>
+      <li class="poker_start hide"><div class="btn">开始</li>
+      <li class="poker_op hide"><div class="btn">1分</li>
+      <li class="poker_op hide"><div class="btn">2分</li>
+      <li class="poker_op hide"><div class="btn">5分</li>
+      <li class="poker_op hide"><div class="btn">弃牌</li>
     </ul>
   </div>
 
-    <h6 style="margin: 80px 200px 20px;display: none;">以下为你这局的牌：</h6>
+    <h6 id="poker_title" class="hide" style="margin: 80px 200px 20px;">以下为你这局的牌：</h6>
     <div id="poker_area" class="operator hide">
     <ul>
-      <li><div class="poker_img"><img src="http://ppstd.dn.qbox.me/11.jpg?imageView/2/w/100/h/160" /></li>
-      <li><div class="poker_img"><img src="http://ppstd.dn.qbox.me/11.jpg?imageView/2/w/100/h/160" /></li>
-      <li><div class="poker_img"><img src="http://ppstd.dn.qbox.me/11.jpg?imageView/2/w/100/h/160" /></li>
+      <li><div class="poker_img"><img id="poker_img_0" src="" /></li>
+      <li><div class="poker_img"><img id="poker_img_1" src="" /></li>
+      <li><div class="poker_img"><img id="poker_img_2" src="" /></li>
     </ul>
     </div>
 
-
+    <p></p>
     <div class="room_status">
       <% if @cast.nil? || !@cast.active  %>
         游戏还未开始...

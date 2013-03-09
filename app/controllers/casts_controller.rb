@@ -13,7 +13,18 @@ class CastsController < ApplicationController
     @cast = Cast.includes(:user).includes(:comments).first
   end
 
-  def join
+  def send_poker
+    @cast = Cast.find_by_id(params[:cast_id])
+    pokers = []
+    1.upto(4) do |c|
+      1.upto(13){ |n| pokers << "#{c}#{n}".to_i }
+    end
+    users = @cast.comments.map { |cmt| cmt.user_id }
+    pokers = pokers.shuffle.each_slice(3).to_a.sample(@cast.comments.size())
+    @user_pokers = Hash[users.zip(pokers)]
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new

@@ -1,0 +1,12 @@
+
+<% @user_pokers.keys.each do |key| %>
+  <% broadcast "/user/#{key}" do %>
+    $(".room_status").html("");
+    $("#poker_area").show();
+    $("#poker_title").show();
+    $(".poker_op").show();
+    <% @user_pokers[key].each_with_index do |poker, index| %>
+      $("#poker_img_<%= index %>").attr("src", "http://ppstd.dn.qbox.me/<%= poker %>.jpg?imageView/2/w/100/h/160")
+    <% end %>
+  <% end %>
+<% end %>

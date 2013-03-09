@@ -1,10 +1,10 @@
 
   <% broadcast "/poker/#{@cast.id}" do %>
-    $(".user_<%= @cast.comments.size()-1 %>").html("<img src='<%= @current_user.avatar_type(:small) %>' />");
-    $("#zjh_reports").append("<li><font color='green'><%= @current_user.name  %>已上桌...</li>");
+    $(".user_<%= @cast.comments.size()-1 %>").html("<img src='<%= @current_user.avatar_type(:small) %>' /><%= @current_user.name %><p style='color: red'><%= @comment.active_msg %></p>");
+    $("#zjh_reports").append("<li>[<%= Time.now.strftime("%H:%M:%S") %>] <font color='blue'><%= @current_user.name %> 已上桌.</li>");
   <% end %>
   $(".room_status").html("游戏等待中..."); 
-  $("#poker_btn").show();
+  $(".poker_start").show();
 
 <% if @comment.errors.blank? %>
   var html = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><%= flash[:notice_comment] %></div>';

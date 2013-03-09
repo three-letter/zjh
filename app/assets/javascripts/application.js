@@ -23,8 +23,28 @@ $(function(){
   if(user_id > 0){
     var faye = new Faye.Client('http://pfaye.herokuapp.com/faye');
 
+    faye.subscribe("/user/" + user_id, function(data){
+      eval(data);
+    });
+    
     faye.subscribe("/poker/" + room_id, function(data){
       eval(data);
+    });
+  }
+
+  $(".poker_start").click(function(){
+    $.ajax({
+      url: "/comments/ready",
+      type: "post",
+      data: "cast_id="+room_id
+    });
+  });
+
+  function send_poker(cast_id){
+    $.ajax({
+      url: "/casts/send_poker",
+      type: "POST",
+      data: "cast_id="+cast_id
     });
   }
 

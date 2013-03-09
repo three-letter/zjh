@@ -16,6 +16,15 @@ class CommentsController < ApplicationController
     end
   end
 
+ def ready
+   @comment = Comment.find_by_cast_id_and_user_id(params[:cast_id], @current_user.id)
+   @comment.content = "1"
+   respond_to do |format|
+     @ready = 1 if @comment.save
+     format.js
+   end
+ end 
+
   private 
     def fetch_cast
       if params[:cast_id].blank?

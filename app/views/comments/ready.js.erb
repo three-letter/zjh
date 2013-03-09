@@ -1,0 +1,13 @@
+
+  <% broadcast "/poker/#{@cast.id}" do %>
+    $(".user_<%= @comment.seat %>").html("<img src='<%= @current_user.avatar_type(:small) %>' /><%= @current_user.name %><p style='color: red'><%= @comment.active_msg %></p>");
+    $("#zjh_reports").append("<li>[<%= Time.now.strftime("%H:%M:%S") %>] <font color='green'><%= @current_user.name %> 已经准备.</li>");
+    <% if @cast.all_ready %>
+      $(".room_status").html("<div class=\"progress progress-striped active\"><div class=\"bar\" style=\"width: 100%;\">正在发牌中...</div></div>");
+      send_poker(<%= @cast.id %>);
+    <% else %>
+      $(".room_status").html("等待其他玩家准备.");
+    <% end %> 
+  <% end %>
+  $(".poker_start").hide();
+
