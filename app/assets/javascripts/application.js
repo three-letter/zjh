@@ -19,13 +19,11 @@
 
 $(function(){
   var user_id = $("#current_user_id").val();
+  var room_id = $("#room_id").val();
   if(user_id > 0){
     var faye = new Faye.Client('http://pfaye.herokuapp.com/faye');
-    faye.subscribe("/users/" + user_id, function(data){
-      eval(data);
-    });
 
-    faye.subscribe("/poker", function(data){
+    faye.subscribe("/poker/" + room_id, function(data){
       eval(data);
     });
   }

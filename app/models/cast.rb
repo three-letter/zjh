@@ -15,8 +15,14 @@ class Cast < ActiveRecord::Base
 
   scope :recent_casts, lambda { |uid, limit| joins(:user).order("created_at desc").where("users.id = ?", uid).limit(limit) }
 
-  def status
+  def active
     price == 1
+  end
+  
+  def partner index
+    if index < comments.size()
+      comments[index].user.avatar_type(:small)
+    end
   end
 
   def video_url

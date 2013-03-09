@@ -9,10 +9,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @cast.comments.build(params[:comment].merge(user_id: current_user.id))
-    flash[:notice_comment] = "评论成功" if @comment.save
-    scan_user(@comment.content)
+    @comment = @cast.comments.build({cast_id: params[:cast_id], user_id: current_user.id})
     respond_to do |format|
+      @join = 1 if @comment.save
       format.js
     end
   end
