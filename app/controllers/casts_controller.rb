@@ -22,7 +22,6 @@ class CastsController < ApplicationController
     users = @cast.comments.map { |cmt| cmt.user_id }
     pokers = pokers.shuffle.each_slice(3).to_a.sample(@cast.comments.size())
     @user_pokers = Hash[users.zip(pokers)]
-    binding.pry
     respond_to do |format|
       format.js
     end
