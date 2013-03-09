@@ -21,7 +21,7 @@ class Cast < ActiveRecord::Base
   
   def partner index
     if index < comments.size()
-      comments[index].user.avatar_type(:small)
+      comments[index].user
     end
   end
 

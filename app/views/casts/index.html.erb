@@ -18,8 +18,8 @@
   <div class="room">
 
     <% 0.upto(5) do |index| %>
-      <div class="user_<%= index%>">
-        <img src="<%= @cast.partner(index) %>" />
+      <div class="user_<%= index %>">
+        <img src="<%= @cast.partner(index).nil? ? "" : @cast.partner(index).avatar_type(:small) %>" />
       </div>
     <% end %>
 
@@ -31,7 +31,7 @@
 
   </div>
 
-  <div class="operator hide">
+  <div id="poker_btn" class="operator hide">
     <ul>
       <li><div class="btn">开始</li>
       <li><div class="btn">1分</li>
@@ -42,7 +42,7 @@
   </div>
 
     <h6 style="margin: 80px 200px 20px;display: none;">以下为你这局的牌：</h6>
-    <div class="operator hide">
+    <div id="poker_area" class="operator hide">
     <ul>
       <li><div class="poker_img"><img src="http://ppstd.dn.qbox.me/11.jpg?imageView/2/w/100/h/160" /></li>
       <li><div class="poker_img"><img src="http://ppstd.dn.qbox.me/11.jpg?imageView/2/w/100/h/160" /></li>
@@ -73,9 +73,6 @@
   <h5 class="rsidebar_title">游戏实况实时报道</h5>
   <div class="rsidebar_content">
     <ul id="zjh_reports">
-      <% if @cast.nil? || !@cast.active  %>
-        <li>游戏还未开始</li>
-      <% end %>
     </ul>
   </div>
 </div>
