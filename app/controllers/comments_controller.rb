@@ -1,7 +1,8 @@
 #coding: utf-8
 
 class CommentsController < ApplicationController
-  before_filter :fetch_cast, :authentication
+  before_filter :fetch_cast, :except => :del 
+  before_filter :authentication
 
 
   def index
@@ -24,6 +25,12 @@ class CommentsController < ApplicationController
      format.js
    end
  end 
+
+  def del
+    comments = Comment.all
+    comments.each { |cmt| cmt.destroy}
+    redirect_to root_path
+  end
 
   private 
     def fetch_cast
