@@ -76,6 +76,14 @@
   <div class="rsidebar_content">
     <ul id="zjh_reports">
     </ul>
+    <ul id="zjh_chat" class="">
+      <%= form_tag url_for(controller: "casts", action: "chat"), :remote => true do %>
+        <%= hidden_field_tag :cast_id, @cast.id %>
+        <textarea id="chats" class="input-xlarge" rows="3" name="chats" cols="40"></textarea>
+        <font id="chat_msg" color="red"></font>
+        <%= submit_tag "发布", :style => "margin-top:55px" %>
+      <% end %>
+    </ul>
   </div>
 </div>
 

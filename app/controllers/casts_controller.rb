@@ -27,6 +27,15 @@ class CastsController < ApplicationController
     end
   end
 
+  def chat
+    @cast = Cast.find_by_id(params[:cast_id])
+    @test = params[:chats]
+    respond_to do |format|
+      @msg = "消息不能为空" if @test.blank?
+      format.js
+    end
+  end
+
   def new
     @cast = Cast.new
     key = gen_key

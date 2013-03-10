@@ -1,0 +1,10 @@
+
+<% broadcast "/poker/#{@cast.id}" do %>
+  <% unless @txst.blank? %>
+    $("#zjh_reports").append("<li>[<%= Time.now.strftime("%H:%M:%S") %>] <font color=''><%= @current_user.name %>: <%= @text %> </li>");
+  <% end %>
+<% end %>
+
+<% if @text.blank? %>
+  $("#chat_msg").html("<%= @msg %>"); 
+<% end %>
