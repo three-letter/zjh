@@ -7,6 +7,9 @@
     <% if key.to_i == @cast.partner(0).id %>
       $(".poker_op").show();
     <% end %>
+    <% if @cast.comments.size() == 2 %>
+      $(".poker_open").show();
+    <% end %>
     <% @user_pokers[key].each_with_index do |poker, index| %>
       $("#poker_img_<%= index %>").attr("src", "http://ppstd.dn.qbox.me/<%= poker %>.jpg?imageView/2/w/60/h/100")
     <% end %>

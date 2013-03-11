@@ -70,6 +70,15 @@ $(function(){
       });
   });
 
+  $(".poker_open").click(function(){
+    var score = $("#play_score");
+    var all_score = $("#score").text();
+    $.ajax({
+      url: "/casts/open",
+      type: "POST",
+      data: "cast_id="+room_id+"&score="+score+"&all_score="+all_score
+    });
+  });
 
   function scan_user(){
     var discuss_users = {} ;

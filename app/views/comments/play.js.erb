@@ -8,9 +8,13 @@
   <% end %>
   <% broadcast "/user/#{@cast.partner(@sort).id}" do %>
     $(".poker_op").hide();
+    $(".poker_open").hide();
   <% end %>
   <% broadcast "/user/#{@cast.partner(@next_sort).id}" do %>
     $(".poker_op").show();
+    <% if @cast.comments.size() == 2 %>
+      $(".poker_open").show();
+    <% end %>
   <% end %>
 <% else %>
 
