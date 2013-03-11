@@ -6,7 +6,7 @@
     $("#poker_title").show();
     $(".poker_op").show();
     <% @user_pokers[key].each_with_index do |poker, index| %>
-      $("#poker_img_<%= index %>").attr("src", "http://ppstd.dn.qbox.me/<%= poker %>.jpg?imageView/2/w/100/h/160")
+      $("#poker_img_<%= index %>").attr("src", "http://ppstd.dn.qbox.me/<%= poker %>.jpg?imageView/2/w/60/h/100")
     <% end %>
   <% end %>
 <% end %>
