@@ -26,6 +26,24 @@ class CommentsController < ApplicationController
    end
  end 
 
+ def play
+   @cast = Cast.find_by_id(params[:cast_id])
+   @score = params[:score].to_i
+   @sort = params[:sort].to_i
+   current_score = current_user.score 
+   respond_to do |format|
+     if current_score > @score
+      current_score = current_score - @score
+      current_user.score = current_score
+      @play = 1 if current_user.save
+     else
+       Comment.find_by_cast_id_and_user_id(params[:cast_id], @current_user.id).destroy
+       @play = 0
+     end
+     format.js
+   end
+ end 
+
  def out
    @cast = Cast.find_by_id(params[:cast_id])
    @comment = Comment.find_by_cast_id_and_user_id(params[:cast_id], @current_user.id)

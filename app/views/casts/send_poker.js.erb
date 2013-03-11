@@ -4,9 +4,12 @@
     $(".room_status").html("");
     $("#poker_area").show();
     $("#poker_title").show();
-    $(".poker_op").show();
+    <% if key.to_i == @cast.partner(0).id %>
+      $(".poker_op").show();
+    <% end %>
     <% @user_pokers[key].each_with_index do |poker, index| %>
       $("#poker_img_<%= index %>").attr("src", "http://ppstd.dn.qbox.me/<%= poker %>.jpg?imageView/2/w/60/h/100")
     <% end %>
   <% end %>
 <% end %>
+

@@ -20,12 +20,13 @@ class Cast < ActiveRecord::Base
   end
 
   def all_ready
-    all = true
+    all = false
     comments.each do |cmt|
       unless cmt.active
         all = false
         break
       end
+      all = true
     end
     all
   end

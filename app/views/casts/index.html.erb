@@ -28,20 +28,23 @@
 
     <div class="desktop">
       <div class="zjh_score">
-        累计积分: <font id="score">120</font>
+        累计金币: <font id="score">0</font>
       </div>
     </div>
 
   </div>
 
+        <%= hidden_field_tag :room_id, @cast.nil? ? 0 : @cast.id %>
+        <%= hidden_field_tag :play_sort, 0, :class => "play_sort" %>
+        <%= hidden_field_tag :play_score, 0, :class => "play_score" %>
   <div id="poker_btn" class="operator">
     <ul>
       <li class="poker_start hide"><div class="btn">开始</li>
       <li class="poker_out hide"><div class="btn">退出</li>
-      <li class="poker_op hide"><div class="btn">1分</li>
-      <li class="poker_op hide"><div class="btn">2分</li>
-      <li class="poker_op hide"><div class="btn">5分</li>
-      <li class="poker_op hide"><div class="btn">弃牌</li>
+      <li class="poker_op hide"><div class="btn btn_scroe" id="1">1分</li>
+      <li class="poker_op hide"><div class="btn btn_score" id="2">2分</li>
+      <li class="poker_op hide"><div class="btn btn_score" id="5">5分</li>
+      <li class="poker_op hide"><div class="btn btn_score" id="0">弃牌</li>
     </ul>
   </div>
 
@@ -58,10 +61,11 @@
     <div class="room_status">
       <% if @cast.nil? || !@cast.active  %>
         游戏还未开始...
-        <%= hidden_field_tag :room_id, @cast.nil? ? 0 : @cast.id %>
         <p></p>
-        <%= form_for @cast.comments.new, url: cast_comments_path(@cast), remote: true do |f| %>
-          <%= f.submit "点击加入", class: "btn btn-primary btn-block" %>
+        <% unless @cast.all_ready %>
+          <%= form_for @cast.comments.new, url: cast_comments_path(@cast), remote: true do |f| %>
+            <%= f.submit "点击加入", class: "btn btn-primary btn-block" %>
+          <% end %>
         <% end %>
       <% else %>
         游戏正进行中...

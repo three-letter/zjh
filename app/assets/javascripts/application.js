@@ -56,6 +56,21 @@ $(function(){
     });
   }
 
+  $(".btn_score").click(function (){
+    var sort = $(".play_sort").val();
+    var score = $(".play_score").val();
+    var s = $(this).attr("id");
+    if( s < score )
+      alert("跟牌不能少于"+score+"金币");
+    else
+      $.ajax({
+        url: "/comments/play",
+        type: "POST",
+        data: "cast_id="+room_id+"&score="+s+"&sort="+sort
+      });
+  });
+
+
   function scan_user(){
     var discuss_users = {} ;
     var names = [] ;
