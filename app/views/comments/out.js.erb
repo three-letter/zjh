@@ -1,0 +1,12 @@
+
+<% broadcast "/poker/#{@cast.id}" do %>
+  <% 0.upto(5) do |n| %>
+    $(".user_<%= n %>").html("<img src=\"\" />");
+  <% end%>
+  <% @cast.sort_comments.each_with_index do |cmt, index| %>
+    $(".user_<%= index %>").html("<img src=\"<%= cmt.user.avatar_type(:small) %>\" /><%= cmt.user.name %><p style=\"color:red\"><%= cmt.active_msg %></p>");
+  <% end %>
+  $("#zjh_reports").append("<li>[<%= Time.now.strftime("%H:%M:%S") %>] <font color='red'><%= @current_user.name %> 退出游戏.</li>");
+<% end %>
+
+window.location = "/";

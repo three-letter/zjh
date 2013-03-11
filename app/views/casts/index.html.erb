@@ -11,6 +11,7 @@
 
   <div class="alert alert-success" style="text-align:center; margin:10px 0px 20px;">
     软件041的骚年们，一起来玩游戏吧。。。
+    <p>PS: 对于多种退出方式(如：关闭浏览器 跳转其他页面 关电脑等)，目前还未找到好的退出检测方法，请点击"退出"按钮退出游戏，否则 你懂的...</p>
   </div>
 
   <div class="profile span6">
@@ -36,6 +37,7 @@
   <div id="poker_btn" class="operator">
     <ul>
       <li class="poker_start hide"><div class="btn">开始</li>
+      <li class="poker_out hide"><div class="btn">退出</li>
       <li class="poker_op hide"><div class="btn">1分</li>
       <li class="poker_op hide"><div class="btn">2分</li>
       <li class="poker_op hide"><div class="btn">5分</li>
@@ -76,11 +78,10 @@
   <div class="rsidebar_content">
     <ul id="zjh_reports">
     </ul>
-    <ul id="zjh_chat" class="">
+    <ul id="zjh_chat" class="hide">
       <%= form_tag url_for(controller: "casts", action: "chat"), :remote => true do %>
         <%= hidden_field_tag :cast_id, @cast.id %>
         <textarea id="chats" class="input-xlarge" rows="3" name="chats" cols="40"></textarea>
-        <font id="chat_msg" color="red"></font>
         <%= submit_tag "发布", :style => "margin-top:55px" %>
       <% end %>
     </ul>

@@ -40,6 +40,14 @@ $(function(){
     });
   });
 
+  $(".poker_out").click(function(){
+    $.ajax({
+      url: "/comments/out",
+      type: "post",
+      data: "cast_id="+room_id
+    });
+  });
+
   function send_poker(cast_id){
     $.ajax({
       url: "/casts/send_poker",

@@ -29,9 +29,9 @@ class CastsController < ApplicationController
 
   def chat
     @cast = Cast.find_by_id(params[:cast_id])
-    @test = params[:chats]
+    @text = params[:chats]
     respond_to do |format|
-      @msg = "消息不能为空" if @test.blank?
+      @msg = "消息不能为空" if @text.blank?
       format.js
     end
   end

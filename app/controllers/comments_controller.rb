@@ -26,6 +26,15 @@ class CommentsController < ApplicationController
    end
  end 
 
+ def out
+   @cast = Cast.find_by_id(params[:cast_id])
+   @comment = Comment.find_by_cast_id_and_user_id(params[:cast_id], @current_user.id)
+   @comment.destroy
+   respond_to do |format|
+     format.js
+   end
+ end 
+
   def del
     comments = Comment.all
     comments.each { |cmt| cmt.destroy}
