@@ -35,16 +35,16 @@
   </div>
 
         <%= hidden_field_tag :room_id, @cast.nil? ? 0 : @cast.id %>
-        <%= hidden_field_tag :play_sort, 0, :class => "play_sort" %>
-        <%= hidden_field_tag :play_score, 0, :class => "play_score" %>
+        <%= hidden_field_tag :play_sort, 0 %>
+        <%= hidden_field_tag :play_score, 0 %>
   <div id="poker_btn" class="operator">
     <ul>
-      <li class="poker_start hide"><div class="btn">开始</li>
-      <li class="poker_out hide"><div class="btn">退出</li>
-      <li class="poker_op hide"><div class="btn btn_scroe" id="1">1分</li>
-      <li class="poker_op hide"><div class="btn btn_score" id="2">2分</li>
-      <li class="poker_op hide"><div class="btn btn_score" id="5">5分</li>
-      <li class="poker_op hide"><div class="btn btn_score" id="0">弃牌</li>
+      <li class="poker_start hide"><div class="btn">开始</div></li>
+      <li class="poker_out hide"><div class="btn">退出</div></li>
+      <li class="poker_op hide"><div class="btn btn_score" id="1">1分</div></li>
+      <li class="poker_op hide"><div class="btn btn_score" id="2">2分</div></li>
+      <li class="poker_op hide"><div class="btn btn_score" id="5">5分</div></li>
+      <li class="poker_op hide"><div class="btn btn_score" id="0">弃牌</div></li>
     </ul>
   </div>
 

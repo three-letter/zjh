@@ -36,6 +36,8 @@ class CommentsController < ApplicationController
       current_score = current_score - @score
       current_user.score = current_score
       @play = 1 if current_user.save
+      @next_sort = @sort + 1
+      @next_sort = 0 if @sort == @cast.comments.size() - 1 
      else
        Comment.find_by_cast_id_and_user_id(params[:cast_id], @current_user.id).destroy
        @play = 0

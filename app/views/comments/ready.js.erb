@@ -12,7 +12,7 @@
 
   <% if @cast.all_ready %>
     <% broadcast "/user/#{@cast.partner(0).id}" do %>
-      send_poker(<%= @cast.id %>);
+      send_poker();
     <% end %>
   <% end%>
   
