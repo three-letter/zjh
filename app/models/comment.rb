@@ -29,4 +29,8 @@ class Comment < ActiveRecord::Base
      end
    end
 
+   def imgs
+     content.split("-")
+   end
+
 end

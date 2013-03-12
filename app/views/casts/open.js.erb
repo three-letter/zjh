@@ -1,0 +1,10 @@
+
+<% if @open == 1 %>
+
+  <% broadcast "/poker/#{@cast_id}" do %>
+    $("#zjh_reports").append("<li>[<%= Time.now.strftime("%H:%M:%S") %>] <font color='blue'><%= @current_user.name %>开牌,结果为:</font></li>");
+    $("#zjh_reports").append("<li><font color='red'>[Winer]<%= @win_cmt.user.name %></font>  <img src='http://ppstd.dn.qbox.me/<%= @win_cmt.imgs[0] %>.jpg?imageView/2/w/60/h/100'> <img src='http://ppstd.dn.qbox.me/<%= @win_cmt.imgs[1]%>.jpg?imageView/2/w/60/h/100'> <img src='http://ppstd.dn.qbox.me/<%= @win_cmt.imgs[2]%>.jpg?imageView/2/w/60/h/100'></li>");
+    $("#zjh_reports").append("<li><font color='blue'>[loser]<%= @lose_cmt.user.name %></font>  <img src='http://ppstd.dn.qbox.me/<%= @lose_cmt.imgs[0] %>.jpg?imageView/2/w/60/h/100'> <img src='http://ppstd.dn.qbox.me/<%= @lose_cmt.imgs[1]%>.jpg?imageView/2/w/60/h/100'> <img src='http://ppstd.dn.qbox.me/<%= @lose_cmt.imgs[2]%>.jpg?imageView/2/w/60/h/100'></li>");
+  <% end %>
+
+<% end %>
