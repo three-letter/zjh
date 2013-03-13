@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227025708) do
+ActiveRecord::Schema.define(:version => 20130313135347) do
 
   create_table "casts", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,28 @@ ActiveRecord::Schema.define(:version => 20130227025708) do
     t.string   "content",    :limit => 128
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+  end
+
+  create_table "rooms", :force => true do |t|
+    t.string   "title"
+    t.integer  "state"
+    t.integer  "win"
+    t.integer  "cur_seat_id"
+    t.integer  "score"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "style"
+  end
+
+  create_table "seats", :id => false, :force => true do |t|
+    t.integer  "seat_id"
+    t.integer  "room_id"
+    t.integer  "user_id"
+    t.integer  "state"
+    t.integer  "score"
+    t.string   "poker"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tags", :force => true do |t|

@@ -1,0 +1,46 @@
+<% content_for :title do %>
+  首页 
+<% end %>
+
+<% if flash[:notice] %>
+  <div class='alert alert-success'>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+  <div class="profile span9">
+
+  <% @rooms.each do |room| %>  
+    <div class="casts row">
+      <div class="span3">
+        <a href="<%= url_for room_path room %>"><img class="case_img" src="http://ppstd.dn.qbox.me/93aba992257a0d08171233478c8bd73cc179f4b2929b805b35f5e784b372403e?vframe/jpg/offset/10/w/160/h/100" /></a>
+      </div>
+      <div class="span6 case">
+        <div class="case_title">
+          <a class="room_link" id="<%= room.id %>" href="<%= url_for room_path room %>"><%= room.title %></a>
+        </div>
+        <div class="case_desc">
+          <blockquote class="pull-left">
+            游戏规则:<br/>
+              1）4个人打3副去掉两个大王的扑克牌 <br/>
+              2）每家逆时针方向顺次摸39张牌，留下最后4张做底牌
+          </blockquote>
+        </div>
+        <div>
+          <div class="pull-left">
+            <i class="icon-tag"></i> <%= room.tag %>
+            <i class="icon-user"></i> <%= room.seats.size %>
+          </div>
+          <div class="case_auth">
+            — 于<%= time_ago_in_words(room.updated_at) %>前创建</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+  <% end %>
+
+  </div>
+
+

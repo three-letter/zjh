@@ -1,0 +1,48 @@
+
+<ul class="breadcrumb">
+  <li><a href="<%= root_path %>">Home</a><span class="divider">/</span></li>
+  <li class="active">添加游戏房间</li>
+</ul>
+
+
+<div class="profile span9">
+
+  <legend>添加游戏房间</legend>
+
+  <%= form_for @room, :html => { :class => "simple_form form-horizontal" } do |f| %>
+    <fieldset>
+
+
+      <div class="control-group">
+        <%= f.label :title, "标题", :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :title, :class => "text_field" %>
+          <p style="color:red"><%= @room.errors[:title][0].to_s %></p>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :style, "游戏类型", :class => "control-label" %>
+        <div class="controls">
+          <%= f.select :style, options_for_select({"6团" => 1 , "4团" => 2}, 1) %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit '确定', :id => "cast_share_btn", :class => 'btn btn-primary' %>
+        <%= link_to '取消', casts_path, :class => 'btn' %>
+      </div>
+
+    </fieldset>
+  <% end %>
+</div>
+
+
+<div class="rsidebar">
+  <h5 class="rsidebar_title">友情提示</h5>
+  <div class="rsidebar_content">
+    <div class="user_hint">1）上传视频成功(100%)后再提交表单</div>
+    <div class="user_hint">2）可选择视频的试看时间和金额</div>
+    <div class="user_hint">3）最好添加标签，便于视频的查找</div>
+  </div>
+</div>
