@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313135347) do
+ActiveRecord::Schema.define(:version => 20130314082623) do
 
   create_table "casts", :force => true do |t|
     t.integer  "user_id"
@@ -45,17 +45,18 @@ ActiveRecord::Schema.define(:version => 20130313135347) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "style"
+    t.string   "keep"
   end
 
-  create_table "seats", :id => false, :force => true do |t|
+  create_table "seats", :force => true do |t|
     t.integer  "seat_id"
     t.integer  "room_id"
     t.integer  "user_id"
-    t.integer  "state"
-    t.integer  "score"
+    t.integer  "state",      :default => 0
+    t.integer  "score",      :default => 0
     t.string   "poker"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "tags", :force => true do |t|

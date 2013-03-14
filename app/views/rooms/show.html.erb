@@ -22,12 +22,12 @@
   <div class="profile span6">
 
   <div class="room">
-
+    <%= hidden_field_tag :room_id, @room.id %>
     <% 0.upto(5) do |index| %>
       <div class="user_<%= index %>">
-        <%= @room.seat(index).nil? ? raw("空位置<br/><a href='' class='room_join'>点击</a>加入") : @room.seat(index).user.avatar_type(:small) %>
-        <%= @room.seat(index).nil? ? "" : @room.seat(index).user.name %>
-        <p style="color: red"><%= @room.seat(index).nil? ? "" : @room.seat(index).active_msg %></p>
+        <% if @room.max_seat > index %>
+          <%= render :partial => "seat", :locals => {:seat => @room.seat(index), :index => index } %>
+        <% end %>
       </div>
     <% end %>
 
@@ -49,22 +49,14 @@
   </div>
 
     <h6 id="poker_title" class="hide" style="margin: 80px 200px 20px;">以下为你这局的牌：</h6>
-    <div id="poker_area" class="operator hide">
-    <ul>
-      <li><div class="poker_img"><img id="poker_img_0" src="" /></li>
-      <li><div class="poker_img"><img id="poker_img_1" src="" /></li>
-      <li><div class="poker_img"><img id="poker_img_2" src="" /></li>
-    </ul>
+    <div id="poker_area" class="operator">
     </div>
 
     <p></p>
+    
     <div class="room_status">
-
       <%= @room.state_msg %>
       <p></p>
-      <%= form_for @room.seats.new, url: room_seats_path(@room), remote: true do |f| %>
-        <%= f.submit "点击加入", class: "btn btn-primary btn-block" %>
-      <% end %>
     </div>
 
   </div>
@@ -82,4 +74,13 @@
   </div>
 </div>
 
+<script type="text/javascript">
+  var faye = new Faye.Client('http://pfaye.herokuapp.com/faye');
+  faye.subscribe("/room/<%= @room.id %>", function(data){
+    eval(data);
+  });
+  faye.subscribe("/room/<%= @room.id %>/user/<%= current_user.id %>", function(data){
+    eval(data);
+  });
+</script>
 

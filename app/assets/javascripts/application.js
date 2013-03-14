@@ -18,17 +18,30 @@
 //= require_tree .
 
 $(function(){
-    
-  var faye = new Faye.Client('http://pfaye.herokuapp.com/faye');
-  function publish(con){
-    faye.subscribe(con, function(data){
-      eval(data);
+  
+  $(".room_join").click(function(){
+    var room_id = $("#room_id").val();
+    var seat_id = $(this).attr("id");
+    $.ajax({
+      url: "/rooms/join",
+      type: "POST",
+      data: "id="+room_id+"&seat_id="+seat_id
     });
-  }
+  });
 
-  $(".room_link").click(function(){
-    var room_id = $(this).attr("id");
-    publish("/room/"+room_id);
+  $(".poker_start").click(function(){
+    var room_id = $("#room_id").val();
+    $.ajax({
+      url: "/seats/start",
+      type: "POST",
+      data: "room_id="+room_id
+    });
+  });
+
+  $(".poker_check").click(function(){
+    var css = $(this).attr("css");
+    css = css == "poker_img poker_check" ? "poker_img_selected poker_check" : "poker_img poker_check";
+    $(this).attr("css", css);
   });
 
 });

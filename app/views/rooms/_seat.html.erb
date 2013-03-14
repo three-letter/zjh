@@ -1,0 +1,4 @@
+
+<%= seat.nil? ? raw("空位置<div color='red' id='#{index}' class='room_join btn'>加入</div>") : raw("<img src='#{seat.user.avatar_type(:small)}' />") %>
+<%= seat.nil? ? "" : seat.user.name %>
+<p style="color: red"><%= seat.nil? ? "" : seat.active_msg %></p>

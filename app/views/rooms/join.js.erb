@@ -1,0 +1,12 @@
+<% if @join.blank? %>
+  alert("加入失败！");
+<% else %>
+  <% broadcast "/room/#{@room.id}" do %>
+    $("#zjh_reports").append("<li>[<%= Time.now.strftime("%H:%M:%S") %>] <font color='blue'><%= @current_user.name %> 已上桌.</li>");
+    $(".user_<%= @seat.seat_id %>").html("<%= escape_javascript(render(:partial => 'seat', :locals => {:seat => @seat, :index => @seat.seat_id})) %>");
+  <% end %>
+  
+  $(".poker_start").show();
+  $(".poker_exit").show();
+
+<% end %>

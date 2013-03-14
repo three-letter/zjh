@@ -2,6 +2,10 @@
   首页 
 <% end %>
 
+<ul class="breadcrumb">
+  <li class="active">Home</li>
+</ul>
+
 <% if flash[:notice] %>
   <div class='alert alert-success'>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -14,7 +18,7 @@
   <% @rooms.each do |room| %>  
     <div class="casts row">
       <div class="span3">
-        <a href="<%= url_for room_path room %>"><img class="case_img" src="http://ppstd.dn.qbox.me/93aba992257a0d08171233478c8bd73cc179f4b2929b805b35f5e784b372403e?vframe/jpg/offset/10/w/160/h/100" /></a>
+        <a href="<%= url_for room_path room %>"><img class="case_img" width="160px" height="100px" src="<%= room.img %>" /></a>
       </div>
       <div class="span6 case">
         <div class="case_title">

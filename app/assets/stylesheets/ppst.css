@@ -272,19 +272,24 @@ blockquote {
 }
 
 .operator {
-  margin: 0px 100px;
+  margin: 0px 0px;
 }
 
 .operator ul{
   margin: 0px;
+  width: 480px;
   list-style:none;
 }
 
 .operator li{
-  margin: 0px 10px;
+  margin: 0px 2px;
   float: left;
 }
 
 .poker_img {
   border: 1px solid #EEEEEE;
+}
+
+.poker_img_selected {
+  border: 2px solid red;
 }

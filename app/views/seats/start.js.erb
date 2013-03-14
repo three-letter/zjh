@@ -1,0 +1,14 @@
+<% if @start.blank? %>
+  alert("操作失败");
+<% else %>
+  <% broadcast "/room/#{@room.id}" do %>
+    $("#zjh_reports").append("<li>[<%= Time.now.strftime("%H:%M:%S") %>] <font color='blue'><%= @current_user.name %> 已准备.</li>");
+    $(".user_<%= @seat.seat_id %>").html("<%= escape_javascript(render(:partial => 'rooms/seat', :locals => {:seat => @seat, :index => @seat.seat_id})) %>");
+  <% end %>
+  
+  $(".poker_start").hide();
+  <% if @room.all_ready %>
+    $.ajax({url: "/rooms/send_poker",type: "POST",data: "id=<%= @room.id %>"});
+  <% end %>
+
+<% end%>
