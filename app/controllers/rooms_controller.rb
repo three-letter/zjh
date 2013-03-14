@@ -36,11 +36,12 @@ class RoomsController < ApplicationController
   def send_poker
     @room = Room.find_by_id(params[:id])
     pokers = get_complete_poker * @room.poker_num
-    #2.times { pokers.delete(516) }
+    pokers.delete(516)
+    pokers << 516
     pokers = pokers.shuffle
-    keep_pokers = pokers[pokers.length-3, 3]
-    send_pokers = pokers[0,pokers.length-3]
-    user_pokers = send_pokers.each_slice(35).to_a.map {|ps| ps.sort_by {|p| p.to_s[1,p.to_s.length].to_i } }
+    keep_pokers = pokers[pokers.length-4, 4]
+    send_pokers = pokers[0,pokers.length-4].each_slice(39).to_a
+    user_pokers = send_pokers.map {|ps| ps.sort_by {|p| p.to_s[1,p.to_s.length].to_i } }
     seats = @room.sort_seats.map { |s| s.user.id }
     @seat_pokers = Hash[seats.zip(user_pokers)]
     @room.keep = keep_pokers.join("-")

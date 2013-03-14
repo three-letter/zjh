@@ -1,6 +1,5 @@
 
 <% @seat_pokers.each do |uid, pokers| %>
-  <% binding.pry %>
   <% broadcast "/room/#{@room.id}/user/#{uid}" do %>
     $("#poker_title").show();
     $("#poker_area").html("<%= escape_javascript(render(:partial => 'seats/poker', :locals => {:pokers => pokers})) %>");

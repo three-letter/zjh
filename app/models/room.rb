@@ -29,7 +29,7 @@ class Room < ActiveRecord::Base
 
   def max_seat
     return 6 if style == 1
-    return 3 if style == 2
+    return 4 if style == 2
   end
   
   def tag
@@ -39,7 +39,7 @@ class Room < ActiveRecord::Base
   
   def poker_num
     return 4 if style == 1
-    return 2 if style == 2
+    return 3 if style == 2
   end
 
   def img

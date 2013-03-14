@@ -1,3 +1,5 @@
+#coding: utf-8
+
 class SeatsController < ApplicationController
   before_filter :fetch_room
 
@@ -8,6 +10,19 @@ class SeatsController < ApplicationController
       @start = 1 if @seat.save
       format.js
     end
+  end
+
+  def play
+    poker_str = params[:pokers]
+    respond_to do |format|
+      if poker_str.blank?
+        @play = 0
+        @msg  = "请选择至少一张扑克" 
+      else
+        @play = 1
+      end
+      format.js
+    end 
   end
 
   private

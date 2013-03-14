@@ -38,10 +38,30 @@ $(function(){
     });
   });
 
-  $(".poker_check").click(function(){
-    var css = $(this).attr("css");
+  $(".poker_check").live("click", function(){
+    var css = $(this).attr("class");
     css = css == "poker_img poker_check" ? "poker_img_selected poker_check" : "poker_img poker_check";
-    $(this).attr("css", css);
+    $(this).attr("class", css);
   });
+
+  function scan_poker(){
+    var pokers = '';
+    $(".poker_img_selected").each(function(){
+      var poker = $(this).id;
+      pokers = pokers + ","
+    });
+    return pokers;
+  }
+  
+  $(".poker_play").click(function(){
+    var room_id = $("#room_id").val();
+    var pokers = scan_poker();
+    $.ajax({
+      url: "/seats/play",
+      type: "POST",
+      data: "room_id="+room_id+"&pokers="+pokers
+    });  
+  });
+  
 
 });
