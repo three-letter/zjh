@@ -268,7 +268,12 @@ blockquote {
 .zjh_score {
   width: 100px;
   font-size: 14px;
-  margin: 120px 15px;
+  margin: 40px 15px 5px;
+}
+.zjh_played_poker {
+  width: 120px;
+  font-size: 14px;
+  margin: 20px -1px;
 }
 
 .operator {

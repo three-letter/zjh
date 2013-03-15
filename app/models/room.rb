@@ -1,7 +1,7 @@
 #coding: utf-8
 
 class Room < ActiveRecord::Base
-  attr_accessible :cur_seat_id, :score, :state, :title, :win, :style, :keep
+  attr_accessible :cur_seat_id, :score, :state, :title, :win, :style, :keep, :cur_poker
   validates :title, :presence => { :message => "标题不能为空" }
 
   has_many :seats
@@ -9,7 +9,11 @@ class Room < ActiveRecord::Base
   def sort_seats
     seats.sort { |s1,s2| s1.seat_id <=> s2.seat_id }
   end
-  
+
+  def next_seat_id sid
+    (sid + 1) == max_seat ? 0 : (sid + 1)
+  end
+
   def seat index
     seats.select { |s| s.seat_id == index }[0]
   end

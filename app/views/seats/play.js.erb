@@ -1,3 +1,15 @@
-<% if @play == 0 %>
+<% if @play.blank? %>
   alert("<%= @msg %>");
+<% else %>
+  <% broadcast "/room/#{@room.id}" do %>
+    $("#zjh_reports").append("<li>[<%= Time.now.strftime("%H:%M:%S") %>] <font color='blue'><%= @current_user.name %> 已上出牌.</li>");
+    $("#score").html("<%= @room.score %>");
+    $(".zjh_played_poker").html("<%= escape_javascript(render(:partial => "rooms/poker", :locals => {:user => @seat.user, :pokers => @pokers })) %>");
+  <% end %>
+  
+  <% broadcast "/room/#{@room.id}/user/#{@next.user.id}" do %>
+    $(".poker_play").show();
+  <% end %>
+
+  $(".poker_play").hide();
 <% end %>

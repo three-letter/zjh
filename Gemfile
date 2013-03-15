@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 
 gem "paperclip", "~> 3.0"
-gem "pry", :group => :development
+gem "pry-rails", :group => :development
 gem "qiniu-rs"
 gem "jquery-fileupload-rails"
 gem "jquery-atwho-rails"

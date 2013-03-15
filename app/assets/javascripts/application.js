@@ -47,8 +47,8 @@ $(function(){
   function scan_poker(){
     var pokers = '';
     $(".poker_img_selected").each(function(){
-      var poker = $(this).id;
-      pokers = pokers + ","
+      var poker = $(this).attr("id");
+      pokers += poker + ","
     });
     return pokers;
   }
