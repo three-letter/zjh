@@ -1,6 +1,6 @@
 == ZJH
 zjh(link:http://soft041.herokuapp.com) 是一个基于 faye(link:http://faye.jcoglan.com) 实现的南昌牌类游戏的简易web应用。
-通过faye提供的消息发布/订阅服务结合javascript能很好的实现棋牌游戏的web版。
+通过faye提供的消息发布/订阅服务结合javascript能很好的实现棋牌游戏的web版 。
 
 
 
